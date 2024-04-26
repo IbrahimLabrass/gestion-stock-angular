@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-detail-article',
@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class DetailArticleComponent {
 
+  ngOnInit(): void {
+    
+    
+  }
+  confirmerEtSupprimerArticle(): void {
+
+  }
+  annulerEtSupprimerArticle(): void {
+
+  } 
+  modifierArticle(): void{
+
+  }
 }

@@ -4,14 +4,14 @@
         <h3>Se connecter</h3>
       </div>
       <div class="card-body">
-        <div class="alert alert-danger" *ngIf="errorMessage">
-          {{errorMessage}}
+        <div class="alert alert-danger">
+          
         </div>
         <div class="mb-3">
-          <input type="email" class="form-control" placeholder="E-mail" [(ngModel)] = "authenticationRequest.login">
+          <input type="email" class="form-control" placeholder="E-mail">
         </div>
         <div class="mb-3">
-          <input type="password" class="form-control" placeholder="Mot de passe" [(ngModel)] = "authenticationRequest.password">
+          <input type="password" class="form-control" placeholder="Mot de passe" >
         </div>
         <div class="mb-3 d-flex justify-content-between">
           <a [routerLink]="['/inscrire']" class="btn btn-link">S'inscrire</a>

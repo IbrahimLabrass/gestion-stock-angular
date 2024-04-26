@@ -23,7 +23,6 @@ import { ChangePasswComponent } from './pages/profil/change-passw/change-passw.c
 import { PageProfilComponent } from './pages/profil/page-profil/page-profil.component';
 import { NouvelUtilisateurComponent } from './pages/utilisateur/nouvel-utilisateur/nouvel-utilisateur.component';
 import { PageUtilisateurComponent } from './pages/utilisateur/page-utilisateur/page-utilisateur.component';
-import { BouttonArticleComponent } from './composants/boutton-article/boutton-article.component';
 import { DetailArticleComponent } from './composants/detail-article/detail-article.component';
 import { DetailCltFrsComponent } from './composants/detail-clt-frs/detail-clt-frs.component';
 import { DetailCmdCltFrsComponent } from './composants/detail-cmd-clt-frs/detail-cmd-clt-frs.component';
@@ -33,6 +32,9 @@ import { DetailMvtStkComponent } from './composants/detail-mvt-stk/detail-mvt-st
 import { DetailUtilisateurComponent } from './composants/detail-utilisateur/detail-utilisateur.component';
 import { HeaderComponent } from './composants/header/header.component';
 import { LoaderComponent } from './composants/loader/loader.component';
+import { BouttonArticleComponent } from './composants/boutton-article/boutton-article.component';
+import { MenuComponent } from './composants/menu/menu.component';
+import { PaginationComponent } from './composants/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,9 @@ import { LoaderComponent } from './composants/loader/loader.component';
     DetailMvtStkComponent,
     DetailUtilisateurComponent,
     HeaderComponent,
-    LoaderComponent
+    LoaderComponent,
+    MenuComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
