@@ -1,6 +1,7 @@
+import { Article } from "./models/article";
+import { CommandeFournisseur } from "./models/commande-fournisseur";
+
 /* tslint:disable */
-import { Article } from './article';
-import { CommandeFournisseur } from './commande-fournisseur';
 export interface LigneCommandeFournisseur {
   id?: number;
   creationDate?: number;

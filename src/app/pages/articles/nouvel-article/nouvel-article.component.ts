@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ArticleService } from 'src/app/services/article/article.service';
+import { CategoryService } from 'src/app/services/category/category.service';
+import { ArticleDto } from 'src/gs-api/src/models/article-dto';
+import { CategoryDto } from 'src/gs-api/src/models/category-dto';
+import { PhotosService } from 'src/gs-api/src/services';
 
 @Component({
   selector: 'app-nouvel-article',

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CltfrsService } from 'src/app/services/cltfrs/cltfrs.service';
+import { ClientDto } from 'src/gs-api/src/models/client-dto';
 
 @Component({
   selector: 'app-page-client',

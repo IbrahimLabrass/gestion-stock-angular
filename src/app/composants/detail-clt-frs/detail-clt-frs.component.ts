@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { CltfrsService } from 'src/app/services/cltfrs/cltfrs.service';
 
 @Component({
   selector: 'app-detail-clt-frs',

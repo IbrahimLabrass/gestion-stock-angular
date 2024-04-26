@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { CategoryService } from 'src/app/services/category/category.service';
+import { CategoryDto } from 'src/gs-api/src/models/category-dto';
 
 @Component({
   selector: 'app-nouvel-categorie',

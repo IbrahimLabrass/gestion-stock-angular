@@ -7,15 +7,16 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
-import { EntrepriseDto } from '../models/entreprise-dto';
+import { VentesDto } from '../models/ventes-dto';
 @Injectable({
   providedIn: 'root',
 })
-class EntreprisesService extends __BaseService {
-  static readonly findAllPath = '/gestiondestock/v1/entreprises/all';
-  static readonly savePath = '/gestiondestock/v1/entreprises/create';
-  static readonly deletePath = '/gestiondestock/v1/entreprises/delete/{idEntreprise}';
-  static readonly findByIdPath = '/gestiondestock/v1/entreprises/{idEntreprise}';
+class VentesService extends __BaseService {
+  static readonly findAllPath = '/gestiondestock/v1/ventes/all';
+  static readonly savePath = '/gestiondestock/v1/ventes/create';
+  static readonly deletePath = '/gestiondestock/v1/ventes/delete/{idVente}';
+  static readonly findByCodePath = '/gestiondestock/v1/ventes/{codeVente}';
+  static readonly findByIdPath = '/gestiondestock/v1/ventes/{idVente}';
 
   constructor(
     config: __Configuration,
@@ -27,13 +28,13 @@ class EntreprisesService extends __BaseService {
   /**
    * @return successful operation
    */
-  findAllResponse(): __Observable<__StrictHttpResponse<Array<EntrepriseDto>>> {
+  findAllResponse(): __Observable<__StrictHttpResponse<Array<VentesDto>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/gestiondestock/v1/entreprises/all`,
+      this.rootUrl + `/gestiondestock/v1/ventes/all`,
       __body,
       {
         headers: __headers,
@@ -44,16 +45,16 @@ class EntreprisesService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<Array<EntrepriseDto>>;
+        return _r as __StrictHttpResponse<Array<VentesDto>>;
       })
     );
   }
   /**
    * @return successful operation
    */
-  findAll(): __Observable<Array<EntrepriseDto>> {
+  findAll(): __Observable<Array<VentesDto>> {
     return this.findAllResponse().pipe(
-      __map(_r => _r.body as Array<EntrepriseDto>)
+      __map(_r => _r.body as Array<VentesDto>)
     );
   }
 
@@ -61,14 +62,14 @@ class EntreprisesService extends __BaseService {
    * @param body undefined
    * @return successful operation
    */
-  saveResponse(body?: EntrepriseDto): __Observable<__StrictHttpResponse<EntrepriseDto>> {
+  saveResponse(body?: VentesDto): __Observable<__StrictHttpResponse<VentesDto>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
     __body = body;
     let req = new HttpRequest<any>(
       'POST',
-      this.rootUrl + `/gestiondestock/v1/entreprises/create`,
+      this.rootUrl + `/gestiondestock/v1/ventes/create`,
       __body,
       {
         headers: __headers,
@@ -79,7 +80,7 @@ class EntreprisesService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<EntrepriseDto>;
+        return _r as __StrictHttpResponse<VentesDto>;
       })
     );
   }
@@ -87,23 +88,23 @@ class EntreprisesService extends __BaseService {
    * @param body undefined
    * @return successful operation
    */
-  save(body?: EntrepriseDto): __Observable<EntrepriseDto> {
+  save(body?: VentesDto): __Observable<VentesDto> {
     return this.saveResponse(body).pipe(
-      __map(_r => _r.body as EntrepriseDto)
+      __map(_r => _r.body as VentesDto)
     );
   }
 
   /**
-   * @param idEntreprise undefined
+   * @param idVente undefined
    */
-  deleteResponse(idEntreprise: number): __Observable<__StrictHttpResponse<null>> {
+  deleteResponse(idVente: number): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
     let req = new HttpRequest<any>(
       'DELETE',
-      this.rootUrl + `/gestiondestock/v1/entreprises/delete/${idEntreprise}`,
+      this.rootUrl + `/gestiondestock/v1/ventes/delete/${idVente}`,
       __body,
       {
         headers: __headers,
@@ -119,26 +120,26 @@ class EntreprisesService extends __BaseService {
     );
   }
   /**
-   * @param idEntreprise undefined
+   * @param idVente undefined
    */
-  delete(idEntreprise: number): __Observable<null> {
-    return this.deleteResponse(idEntreprise).pipe(
+  delete(idVente: number): __Observable<null> {
+    return this.deleteResponse(idVente).pipe(
       __map(_r => _r.body as null)
     );
   }
 
   /**
-   * @param idEntreprise undefined
+   * @param codeVente undefined
    * @return successful operation
    */
-  findByIdResponse(idEntreprise: number): __Observable<__StrictHttpResponse<EntrepriseDto>> {
+  findByCodeResponse(codeVente: string): __Observable<__StrictHttpResponse<VentesDto>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/gestiondestock/v1/entreprises/${idEntreprise}`,
+      this.rootUrl + `/gestiondestock/v1/ventes/${codeVente}`,
       __body,
       {
         headers: __headers,
@@ -149,22 +150,58 @@ class EntreprisesService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<EntrepriseDto>;
+        return _r as __StrictHttpResponse<VentesDto>;
       })
     );
   }
   /**
-   * @param idEntreprise undefined
+   * @param codeVente undefined
    * @return successful operation
    */
-  findById(idEntreprise: number): __Observable<EntrepriseDto> {
-    return this.findByIdResponse(idEntreprise).pipe(
-      __map(_r => _r.body as EntrepriseDto)
+  findByCode(codeVente: string): __Observable<VentesDto> {
+    return this.findByCodeResponse(codeVente).pipe(
+      __map(_r => _r.body as VentesDto)
+    );
+  }
+
+  /**
+   * @param idVente undefined
+   * @return successful operation
+   */
+  findByIdResponse(idVente: number): __Observable<__StrictHttpResponse<VentesDto>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/gestiondestock/v1/ventes/${idVente}`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<VentesDto>;
+      })
+    );
+  }
+  /**
+   * @param idVente undefined
+   * @return successful operation
+   */
+  findById(idVente: number): __Observable<VentesDto> {
+    return this.findByIdResponse(idVente).pipe(
+      __map(_r => _r.body as VentesDto)
     );
   }
 }
 
-module EntreprisesService {
+module VentesService {
 }
 
-export { EntreprisesService }
+export { VentesService }

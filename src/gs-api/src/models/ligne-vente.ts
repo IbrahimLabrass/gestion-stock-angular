@@ -1,12 +1,12 @@
 /* tslint:disable */
+import { Ventes } from './ventes';
 import { Article } from './article';
-import { CommandeFournisseur } from './commande-fournisseur';
-export interface LigneCommandeFournisseur {
+export interface LigneVente {
   id?: number;
   creationDate?: number;
   lastModifiedDate?: number;
+  vente?: Ventes;
   article?: Article;
-  commandeFournisseur?: CommandeFournisseur;
   quantite?: number;
   prixUnitaire?: number;
   idEntreprise?: number;

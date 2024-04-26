@@ -1,13 +1,11 @@
 /* tslint:disable */
-import { FournisseurDto } from './fournisseur-dto';
-import { LigneCommandeFournisseurDto } from './ligne-commande-fournisseur-dto';
-export interface CommandeFournisseurDto {
+import { ArticleDto } from './article-dto';
+import { CommandeFournisseur } from './commande-fournisseur';
+export interface LigneCommandeFournisseurDto {
   id?: number;
-  code?: string;
-  dateCommande?: number;
-  etatCommande?: 'EN_PREPARATION' | 'VALIDEE' | 'LIVREE';
-  fournisseur?: FournisseurDto;
+  article?: ArticleDto;
+  commandeFournisseur?: CommandeFournisseur;
+  quantite?: number;
+  prixUnitaire?: number;
   idEntreprise?: number;
-  ligneCommandeFournisseurs?: Array<LigneCommandeFournisseurDto>;
-  commandeLivree?: boolean;
 }

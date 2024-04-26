@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import {HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {AuthenticationResponse} from '../../../gs-api/src/models/authentication-response';
-import {LoaderService} from '../../composants/loader/service/loader.service';
 import {tap} from 'rxjs/operators';
 import {error} from 'ng-packagr/lib/util/log';
+import { ServiceService } from 'src/app/composants/loader/service/service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ import {error} from 'ng-packagr/lib/util/log';
 export class HttpInterceptorService implements HttpInterceptor{
 
   constructor(
-    private loaderService: LoaderService
+    private loaderService: ServiceService
   ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

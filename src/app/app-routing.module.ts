@@ -18,6 +18,7 @@ import { PageCategorieComponent } from './pages/categories/page-categorie/page-c
 import { PageUtilisateurComponent } from './pages/utilisateur/page-utilisateur/page-utilisateur.component';
 import { NouveauCltFrsComponent } from './composants/nouveau-clt-frs/nouveau-clt-frs.component';
 import { NouvelleCmdCltFrsComponent } from './composants/nouvelle-cmd-clt-frs/nouvelle-cmd-clt-frs.component';
+import { ApplicationGuardService } from './services/guard/guard.service';
 
 const routes: Routes = [
   {

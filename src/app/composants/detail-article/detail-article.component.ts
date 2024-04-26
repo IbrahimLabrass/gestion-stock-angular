@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, NgModule, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { ArticleService } from 'src/app/services/article/article.service';
+import { ArticleDto } from 'src/gs-api/src/models/article-dto';
 
 @Component({
   selector: 'app-detail-article',

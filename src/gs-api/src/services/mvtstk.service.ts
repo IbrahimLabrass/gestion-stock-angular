@@ -7,18 +7,17 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
-import { UtilisateurDto } from '../models/utilisateur-dto';
-import { ChangerMotDePasseUtilisateurDto } from '../models/changer-mot-de-passe-utilisateur-dto';
+import { MvtStkDto } from '../models/mvt-stk-dto';
 @Injectable({
   providedIn: 'root',
 })
-class UtilisateursService extends __BaseService {
-  static readonly findAllPath = '/gestiondestock/v1/utilisateurs/all';
-  static readonly savePath = '/gestiondestock/v1/utilisateurs/create';
-  static readonly deletePath = '/gestiondestock/v1/utilisateurs/delete/{idUtilisateur}';
-  static readonly findByEmailPath = '/gestiondestock/v1/utilisateurs/find/{email}';
-  static readonly changerMotDePassePath = '/gestiondestock/v1/utilisateurs/update/password';
-  static readonly findByIdPath = '/gestiondestock/v1/utilisateurs/{idUtilisateur}';
+class MvtstkService extends __BaseService {
+  static readonly correctionStockNegPath = '/gestiondestock/v1/mvtstk/correctionneg';
+  static readonly correctionStockPosPath = '/gestiondestock/v1/mvtstk/correctionpos';
+  static readonly entreeStockPath = '/gestiondestock/v1/mvtstk/entree';
+  static readonly mvtStkArticlePath = '/gestiondestock/v1/mvtstk/filter/article/{idArticle}';
+  static readonly sortieStockPath = '/gestiondestock/v1/mvtstk/sortie';
+  static readonly stockReelArticlePath = '/gestiondestock/v1/mvtstk/stockreel/{idArticle}';
 
   constructor(
     config: __Configuration,
@@ -28,50 +27,17 @@ class UtilisateursService extends __BaseService {
   }
 
   /**
-   * @return successful operation
-   */
-  findAllResponse(): __Observable<__StrictHttpResponse<Array<UtilisateurDto>>> {
-    let __params = this.newParams();
-    let __headers = new HttpHeaders();
-    let __body: any = null;
-    let req = new HttpRequest<any>(
-      'GET',
-      this.rootUrl + `/gestiondestock/v1/utilisateurs/all`,
-      __body,
-      {
-        headers: __headers,
-        params: __params,
-        responseType: 'json'
-      });
-
-    return this.http.request<any>(req).pipe(
-      __filter(_r => _r instanceof HttpResponse),
-      __map((_r) => {
-        return _r as __StrictHttpResponse<Array<UtilisateurDto>>;
-      })
-    );
-  }
-  /**
-   * @return successful operation
-   */
-  findAll(): __Observable<Array<UtilisateurDto>> {
-    return this.findAllResponse().pipe(
-      __map(_r => _r.body as Array<UtilisateurDto>)
-    );
-  }
-
-  /**
    * @param body undefined
    * @return successful operation
    */
-  saveResponse(body?: UtilisateurDto): __Observable<__StrictHttpResponse<UtilisateurDto>> {
+  correctionStockNegResponse(body?: MvtStkDto): __Observable<__StrictHttpResponse<MvtStkDto>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
     __body = body;
     let req = new HttpRequest<any>(
       'POST',
-      this.rootUrl + `/gestiondestock/v1/utilisateurs/create`,
+      this.rootUrl + `/gestiondestock/v1/mvtstk/correctionneg`,
       __body,
       {
         headers: __headers,
@@ -82,7 +48,7 @@ class UtilisateursService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<UtilisateurDto>;
+        return _r as __StrictHttpResponse<MvtStkDto>;
       })
     );
   }
@@ -90,79 +56,9 @@ class UtilisateursService extends __BaseService {
    * @param body undefined
    * @return successful operation
    */
-  save(body?: UtilisateurDto): __Observable<UtilisateurDto> {
-    return this.saveResponse(body).pipe(
-      __map(_r => _r.body as UtilisateurDto)
-    );
-  }
-
-  /**
-   * @param idUtilisateur undefined
-   */
-  deleteResponse(idUtilisateur: number): __Observable<__StrictHttpResponse<null>> {
-    let __params = this.newParams();
-    let __headers = new HttpHeaders();
-    let __body: any = null;
-
-    let req = new HttpRequest<any>(
-      'DELETE',
-      this.rootUrl + `/gestiondestock/v1/utilisateurs/delete/${idUtilisateur}`,
-      __body,
-      {
-        headers: __headers,
-        params: __params,
-        responseType: 'json'
-      });
-
-    return this.http.request<any>(req).pipe(
-      __filter(_r => _r instanceof HttpResponse),
-      __map((_r) => {
-        return _r as __StrictHttpResponse<null>;
-      })
-    );
-  }
-  /**
-   * @param idUtilisateur undefined
-   */
-  delete(idUtilisateur: number): __Observable<null> {
-    return this.deleteResponse(idUtilisateur).pipe(
-      __map(_r => _r.body as null)
-    );
-  }
-
-  /**
-   * @param email undefined
-   * @return successful operation
-   */
-  findByEmailResponse(email: string): __Observable<__StrictHttpResponse<UtilisateurDto>> {
-    let __params = this.newParams();
-    let __headers = new HttpHeaders();
-    let __body: any = null;
-
-    let req = new HttpRequest<any>(
-      'GET',
-      this.rootUrl + `/gestiondestock/v1/utilisateurs/find/${email}`,
-      __body,
-      {
-        headers: __headers,
-        params: __params,
-        responseType: 'json'
-      });
-
-    return this.http.request<any>(req).pipe(
-      __filter(_r => _r instanceof HttpResponse),
-      __map((_r) => {
-        return _r as __StrictHttpResponse<UtilisateurDto>;
-      })
-    );
-  }
-  /**
-   * @param email undefined
-   * @return successful operation
-   */
-  findByEmail(email: string): __Observable<UtilisateurDto> {
-    return this.findByEmailResponse(email).pipe(
-      __map(_r => _r.body as UtilisateurDto)
+  correctionStockNeg(body?: MvtStkDto): __Observable<MvtStkDto> {
+    return this.correctionStockNegResponse(body).pipe(
+      __map(_r => _r.body as MvtStkDto)
     );
   }
 
@@ -170,14 +66,14 @@ class UtilisateursService extends __BaseService {
    * @param body undefined
    * @return successful operation
    */
-  changerMotDePasseResponse(body?: ChangerMotDePasseUtilisateurDto): __Observable<__StrictHttpResponse<UtilisateurDto>> {
+  correctionStockPosResponse(body?: MvtStkDto): __Observable<__StrictHttpResponse<MvtStkDto>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
     __body = body;
     let req = new HttpRequest<any>(
       'POST',
-      this.rootUrl + `/gestiondestock/v1/utilisateurs/update/password`,
+      this.rootUrl + `/gestiondestock/v1/mvtstk/correctionpos`,
       __body,
       {
         headers: __headers,
@@ -188,7 +84,7 @@ class UtilisateursService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<UtilisateurDto>;
+        return _r as __StrictHttpResponse<MvtStkDto>;
       })
     );
   }
@@ -196,24 +92,24 @@ class UtilisateursService extends __BaseService {
    * @param body undefined
    * @return successful operation
    */
-  changerMotDePasse(body?: ChangerMotDePasseUtilisateurDto): __Observable<UtilisateurDto> {
-    return this.changerMotDePasseResponse(body).pipe(
-      __map(_r => _r.body as UtilisateurDto)
+  correctionStockPos(body?: MvtStkDto): __Observable<MvtStkDto> {
+    return this.correctionStockPosResponse(body).pipe(
+      __map(_r => _r.body as MvtStkDto)
     );
   }
 
   /**
-   * @param idUtilisateur undefined
+   * @param body undefined
    * @return successful operation
    */
-  findByIdResponse(idUtilisateur: number): __Observable<__StrictHttpResponse<UtilisateurDto>> {
+  entreeStockResponse(body?: MvtStkDto): __Observable<__StrictHttpResponse<MvtStkDto>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-
+    __body = body;
     let req = new HttpRequest<any>(
-      'GET',
-      this.rootUrl + `/gestiondestock/v1/utilisateurs/${idUtilisateur}`,
+      'POST',
+      this.rootUrl + `/gestiondestock/v1/mvtstk/entree`,
       __body,
       {
         headers: __headers,
@@ -224,22 +120,130 @@ class UtilisateursService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<UtilisateurDto>;
+        return _r as __StrictHttpResponse<MvtStkDto>;
       })
     );
   }
   /**
-   * @param idUtilisateur undefined
+   * @param body undefined
    * @return successful operation
    */
-  findById(idUtilisateur: number): __Observable<UtilisateurDto> {
-    return this.findByIdResponse(idUtilisateur).pipe(
-      __map(_r => _r.body as UtilisateurDto)
+  entreeStock(body?: MvtStkDto): __Observable<MvtStkDto> {
+    return this.entreeStockResponse(body).pipe(
+      __map(_r => _r.body as MvtStkDto)
+    );
+  }
+
+  /**
+   * @param idArticle undefined
+   * @return successful operation
+   */
+  mvtStkArticleResponse(idArticle: number): __Observable<__StrictHttpResponse<Array<MvtStkDto>>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/gestiondestock/v1/mvtstk/filter/article/${idArticle}`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<Array<MvtStkDto>>;
+      })
+    );
+  }
+  /**
+   * @param idArticle undefined
+   * @return successful operation
+   */
+  mvtStkArticle(idArticle: number): __Observable<Array<MvtStkDto>> {
+    return this.mvtStkArticleResponse(idArticle).pipe(
+      __map(_r => _r.body as Array<MvtStkDto>)
+    );
+  }
+
+  /**
+   * @param body undefined
+   * @return successful operation
+   */
+  sortieStockResponse(body?: MvtStkDto): __Observable<__StrictHttpResponse<MvtStkDto>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    __body = body;
+    let req = new HttpRequest<any>(
+      'POST',
+      this.rootUrl + `/gestiondestock/v1/mvtstk/sortie`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<MvtStkDto>;
+      })
+    );
+  }
+  /**
+   * @param body undefined
+   * @return successful operation
+   */
+  sortieStock(body?: MvtStkDto): __Observable<MvtStkDto> {
+    return this.sortieStockResponse(body).pipe(
+      __map(_r => _r.body as MvtStkDto)
+    );
+  }
+
+  /**
+   * @param idArticle undefined
+   * @return successful operation
+   */
+  stockReelArticleResponse(idArticle: number): __Observable<__StrictHttpResponse<number>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/gestiondestock/v1/mvtstk/stockreel/${idArticle}`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'text'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return (_r as HttpResponse<any>).clone({ body: parseFloat((_r as HttpResponse<any>).body as string) }) as __StrictHttpResponse<number>
+      })
+    );
+  }
+  /**
+   * @param idArticle undefined
+   * @return successful operation
+   */
+  stockReelArticle(idArticle: number): __Observable<number> {
+    return this.stockReelArticleResponse(idArticle).pipe(
+      __map(_r => _r.body as number)
     );
   }
 }
 
-module UtilisateursService {
+module MvtstkService {
 }
 
-export { UtilisateursService }
+export { MvtstkService }

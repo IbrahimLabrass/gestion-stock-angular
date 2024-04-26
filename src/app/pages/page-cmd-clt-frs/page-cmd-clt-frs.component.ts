@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CmdcltfrsService } from 'src/app/services/cmdcltfrs/cmdcltfrs.service';
+import { LigneCommandeClientDto } from 'src/gs-api/src/models/ligne-commande-client-dto';
 
 @Component({
   selector: 'app-page-cmd-clt-frs',
