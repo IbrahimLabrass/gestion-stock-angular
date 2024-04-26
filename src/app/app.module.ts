@@ -9,11 +9,8 @@ import { FormsModule } from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.component';
 import { PageStatistiquesComponent } from './pages/page-statistiques/page-statistiques.component';
-import { ProfilComponent } from './pages/profil/profil.component';
-import { UtilisateurComponent } from './pages/utilisateur/utilisateur.component';
 import { PageClientComponent } from './pages/page-client/page-client.component';
 import { PageFournisseurComponent } from './pages/page-fournisseur/page-fournisseur.component';
-import { PageMvtstkComponent } from './pages/page-mvtstk/page-mvtstk.component';
 import { PageCmdCltFrsComponent } from './pages/page-cmd-clt-frs/page-cmd-clt-frs.component';
 import { NouvelArticleComponent } from './pages/articles/nouvel-article/nouvel-article.component';
 import { PageArticleComponent } from './pages/articles/page-article/page-article.component';
@@ -22,7 +19,6 @@ import { PageCategorieComponent } from './pages/categories/page-categorie/page-c
 import { ChangePasswComponent } from './pages/profil/change-passw/change-passw.component';
 import { PageProfilComponent } from './pages/profil/page-profil/page-profil.component';
 import { NouvelUtilisateurComponent } from './pages/utilisateur/nouvel-utilisateur/nouvel-utilisateur.component';
-import { PageUtilisateurComponent } from './pages/utilisateur/page-utilisateur/page-utilisateur.component';
 import { DetailArticleComponent } from './composants/detail-article/detail-article.component';
 import { DetailCltFrsComponent } from './composants/detail-clt-frs/detail-clt-frs.component';
 import { DetailCmdCltFrsComponent } from './composants/detail-cmd-clt-frs/detail-cmd-clt-frs.component';
@@ -35,6 +31,9 @@ import { LoaderComponent } from './composants/loader/loader.component';
 import { BouttonArticleComponent } from './composants/boutton-article/boutton-article.component';
 import { MenuComponent } from './composants/menu/menu.component';
 import { PaginationComponent } from './composants/pagination/pagination.component';
+import { NouveauCltFrsComponent } from './composants/nouveau-clt-frs/nouveau-clt-frs.component';
+import { NouvelleCmdCltFrsComponent } from './composants/nouvelle-cmd-clt-frs/nouvelle-cmd-clt-frs.component';
+import { PageMvtstkComponent } from './pages/page-mvtstk/page-mvtstk.component';
 
 @NgModule({
   declarations: [
@@ -43,8 +42,6 @@ import { PaginationComponent } from './composants/pagination/pagination.componen
     PageInscriptionComponent,
     PageDashboardComponent,
     PageStatistiquesComponent,
-    ProfilComponent,
-    UtilisateurComponent,
     PageClientComponent,
     PageFournisseurComponent,
     PageMvtstkComponent,
@@ -56,7 +53,7 @@ import { PaginationComponent } from './composants/pagination/pagination.componen
     ChangePasswComponent,
     PageProfilComponent,
     NouvelUtilisateurComponent,
-    PageUtilisateurComponent,
+    NouvelUtilisateurComponent,
     BouttonArticleComponent,
     DetailArticleComponent,
     DetailCltFrsComponent,
@@ -68,7 +65,9 @@ import { PaginationComponent } from './composants/pagination/pagination.componen
     HeaderComponent,
     LoaderComponent,
     MenuComponent,
-    PaginationComponent
+    PaginationComponent,
+    NouveauCltFrsComponent,
+    NouvelleCmdCltFrsComponent
   ],
   imports: [
     BrowserModule,
