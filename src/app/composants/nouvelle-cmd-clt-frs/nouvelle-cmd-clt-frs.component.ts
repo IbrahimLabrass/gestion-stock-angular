@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CltfrsService} from '../../services/cltfrs/cltfrs.service';
 import {ArticleDto} from '../../../gs-api/src/models/article-dto';
@@ -23,7 +23,7 @@ export class NouvelleCmdCltFrsComponent implements OnInit {
   codeArticle = '';
   quantite = '';
   codeCommande = '';
-
+  @Input() ligneCommande: any;
   lignesCommande: Array<any> = [];
   totalCommande = 0;
   articleNotYetSelected = false;
@@ -39,7 +39,7 @@ export class NouvelleCmdCltFrsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(data => {
-      this.origin = data.origin;
+      this.origin = data['origin'];
     });
     this.findAllClientsFournisseurs();
     this.findAllArticles();

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../services/user/user.service';
 import {AuthenticationRequest} from '../../../gs-api/src/models/authentication-request';
 import {Router} from '@angular/router';
-import {debug} from 'ng-packagr/lib/util/log';
 
 @Component({
   selector: 'app-page-login',

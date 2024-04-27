@@ -9,8 +9,8 @@ import { map as __map, filter as __filter } from 'rxjs/operators';
 
 import { ArticleDto } from '../models/article-dto';
 import { LigneCommandeClientDto } from '../models/ligne-commande-client-dto';
-import { LigneCommandeFournisseurDto } from '../models/commande-fournisseur-dto';
 import { LigneVenteDto } from '../models/ligne-vente-dto';
+import { LigneCommandeFournisseurDto } from '../models/ligne-commande-fournisseur-dto';
 
 @Injectable({
   providedIn: 'root',

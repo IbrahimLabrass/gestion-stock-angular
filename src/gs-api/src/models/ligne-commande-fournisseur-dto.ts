@@ -1,11 +1,9 @@
 /* tslint:disable */
-import { Article } from './article';
+import { ArticleDto } from './article-dto';
 import { CommandeFournisseur } from './commande-fournisseur';
-export interface LigneCommandeFournisseur {
+export interface LigneCommandeFournisseurDto {
   id?: number;
-  creationDate?: number;
-  lastModifiedDate?: number;
-  article?: Article;
+  article?: ArticleDto;
   commandeFournisseur?: CommandeFournisseur;
   quantite?: number;
   prixUnitaire?: number;

@@ -19,7 +19,7 @@ export class NouvelCategorieComponent  implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const idCategory = this.activatedRoute.snapshot.params.idCategory;
+    const idCategory = this.activatedRoute.snapshot.params['idCategory'];
     if (idCategory) {
       this.categoryService.findById(idCategory)
       .subscribe(cat => {

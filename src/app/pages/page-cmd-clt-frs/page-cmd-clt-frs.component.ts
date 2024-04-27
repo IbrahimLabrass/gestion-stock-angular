@@ -23,7 +23,7 @@ export class PageCmdCltFrsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(data => {
-      this.origin = data.origin;
+      this.origin = data['origin'];
     });
     this.findAllCommandes();
   }

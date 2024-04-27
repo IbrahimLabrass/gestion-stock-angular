@@ -31,13 +31,13 @@ export class NouveauCltFrsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(data => {
-      this.origin = data.origin;
+      this.origin = data['origin'];
     });
     this.findObject();
   }
 
   findObject(): void {
-    const id = this.activatedRoute.snapshot.params.id;
+    const id = this.activatedRoute.snapshot.params['id'];
     if (id) {
       if (this.origin === 'client') {
         this.cltFrsService.findClientById(id)

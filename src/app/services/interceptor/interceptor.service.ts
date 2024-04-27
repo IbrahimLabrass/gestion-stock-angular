@@ -3,7 +3,6 @@ import {HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest, HttpR
 import {Observable} from 'rxjs';
 import {AuthenticationResponse} from '../../../gs-api/src/models/authentication-response';
 import {tap} from 'rxjs/operators';
-import {error} from 'ng-packagr/lib/util/log';
 import { ServiceService } from 'src/app/composants/loader/service/service.service';
 
 @Injectable({

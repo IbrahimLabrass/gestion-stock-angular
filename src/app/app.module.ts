@@ -25,7 +25,6 @@ import { DetailCmdCltFrsComponent } from './composants/detail-cmd-clt-frs/detail
 import { DetailCmdComponent } from './composants/detail-cmd/detail-cmd.component';
 import { DetailMvtStkArticleComponent } from './composants/detail-mvt-stk-article/detail-mvt-stk-article.component';
 import { DetailMvtStkComponent } from './composants/detail-mvt-stk/detail-mvt-stk.component';
-import { DetailUtilisateurComponent } from './composants/detail-utilisateur/detail-utilisateur.component';
 import { HeaderComponent } from './composants/header/header.component';
 import { LoaderComponent } from './composants/loader/loader.component';
 import { BouttonArticleComponent } from './composants/boutton-article/boutton-article.component';
@@ -34,6 +33,9 @@ import { PaginationComponent } from './composants/pagination/pagination.componen
 import { NouveauCltFrsComponent } from './composants/nouveau-clt-frs/nouveau-clt-frs.component';
 import { NouvelleCmdCltFrsComponent } from './composants/nouvelle-cmd-clt-frs/nouvelle-cmd-clt-frs.component';
 import { PageMvtstkComponent } from './pages/page-mvtstk/page-mvtstk.component';
+import { HttpInterceptorService } from './services/interceptor/interceptor.service';
+import { DetailUtilisateurComponent } from './composants/detail-utilisateur/detail-utilisateur.component';
+import { PageUtilisateurComponent } from './pages/utilisateur/page-utilisateur/page-utilisateur.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,7 @@ import { PageMvtstkComponent } from './pages/page-mvtstk/page-mvtstk.component';
     ChangePasswComponent,
     PageProfilComponent,
     NouvelUtilisateurComponent,
-    NouvelUtilisateurComponent,
+    PageUtilisateurComponent,
     BouttonArticleComponent,
     DetailArticleComponent,
     DetailCltFrsComponent,
@@ -75,7 +77,10 @@ import { PageMvtstkComponent } from './pages/page-mvtstk/page-mvtstk.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpInterceptorService,
+    multi: true
+  }],
 })
 export class AppModule { }
