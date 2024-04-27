@@ -1,3 +1,4 @@
+import { SavePhotoParams } from './../../../../gs-api/src/services/photos.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ArticleService } from 'src/app/services/article/article.service';

@@ -20,8 +20,7 @@
                     aria-expanded="true"
                     aria-controls="collapseOne">
               <app-detail-cmd-clt-frs
-                [commande]="cmd"
-                [origin]="origin"
+                
               ></app-detail-cmd-clt-frs>
             </button>
           </div>
@@ -31,7 +30,6 @@
             <div class="card-body">
               <app-detail-cmd
               *ngFor="let ligne of mapLignesCommande.get(cmd.id)"
-              [ligneCommande]="ligne"
               ></app-detail-cmd>
             </div>
           </div>
